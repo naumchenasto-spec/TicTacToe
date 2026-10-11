@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class TIcTacToe {
+public class TicTacToe {
 
+    Font font = new Font("SansSerif", Font.BOLD, 80);
 
     private JFrame frame =  new JFrame();
 
@@ -14,7 +15,10 @@ public class TIcTacToe {
     private JButton[][] buttons = new JButton[3][3];
     private JButton button1 = new JButton("New Game");
 
-    TIcTacToe(){
+    private String current_player = "X";
+
+
+    TicTacToe(){
 
         panel1.setBackground(Color.GRAY);
 
@@ -25,9 +29,13 @@ public class TIcTacToe {
 
         for(int row=0; row<3; row++){
             for(int col=0; col<3; col++){
+                int r=  row;
+                int c = col;
 
-                buttons[row][col] = new JButton("1");
+                buttons[row][col] = new JButton("");
+                buttons[row][col].setFont(font);
                 panel2.add(buttons[row][col]);
+                buttons[row][col].addActionListener(e -> handle_Clicks(r, c));
             }
         }
 
@@ -45,4 +53,20 @@ public class TIcTacToe {
 
         frame.setVisible(true);
     }
+
+    public void handle_Clicks(int row, int col){
+
+        if(buttons[row][col].getText().isEmpty()) {
+            buttons[row][col].setText(current_player);
+
+            if (current_player.equals("X")) {
+                current_player = "O";
+                buttons[row][col].setBackground(Color.RED);
+            } else {
+                current_player = "X";
+                buttons[row][col].setBackground(Color.BLUE);
+            }
+        }
+    }
+
 }
