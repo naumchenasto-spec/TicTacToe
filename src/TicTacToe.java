@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class TicTacToe {
 
-    Font font = new Font("SansSerif", Font.BOLD, 80);
+    Font font = new Font("SansSerif", Font.BOLD, 160);
 
     private JFrame frame =  new JFrame();
 
@@ -66,7 +66,65 @@ public class TicTacToe {
                 current_player = "X";
                 buttons[row][col].setBackground(Color.BLUE);
             }
+
+            if(checkWinner()){
+                System.out.println("Win!");
+
+            }else if(is_tie()){
+                System.out.println("Tie!");
+            }
         }
+    }
+
+    private boolean checkWinner(){
+        for(int row=0; row<3; row++){
+            //horizontal
+            if(buttons[row][0].getText().isEmpty()){
+                continue;
+            }
+
+            if(buttons[row][0].getText().equals(buttons[row][1].getText()) &&
+                    buttons[row][1].getText().equals(buttons[row][2].getText())){
+                return true;
+            }
+        }
+
+        for(int col=0; col<3; col++){
+            //vertical
+            if(buttons[0][col].getText().isEmpty()){
+                continue;
+            }
+            if(buttons[0][col].getText().equals(buttons[1][col].getText()) &&
+                    buttons[1][col].getText().equals(buttons[2][col].getText())){
+                return true;
+            }
+        }
+
+        if(buttons[0][0].getText().equals(buttons[1][1].getText()) &&
+                buttons[1][1].getText().equals(buttons[2][2].getText())
+                && !buttons[0][0].getText().isEmpty()){
+            return true;
+        }
+
+        if(buttons[0][2].getText().equals(buttons[1][1].getText()) &&
+                buttons[1][1].getText().equals(buttons[2][0].getText())
+                && !buttons[0][2].getText().isEmpty()){
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean is_tie(){
+
+       for(int row=0; row<3; row++){
+           for(int col=0; col<3; col++){
+               if( buttons[row][col].getText().isEmpty()){
+                   return false;
+               }
+           }
+       }
+       return true;
     }
 
 }
