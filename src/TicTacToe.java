@@ -17,7 +17,7 @@ public class TicTacToe {
     final private JButton[][] buttons = new JButton[3][3];
     final private JButton button1 = new JButton("New Game");
 
-    private String current_player = "X";
+    private String currentPlayer = "X";
     private int isDrawn = 0;
     private int xWon = 0;
     private int oWon = 0;
@@ -60,14 +60,15 @@ public class TicTacToe {
                 buttons[row][col] = new JButton("");
                 buttons[row][col].setFont(font);
                 buttons[row][col].setBackground(Color.BLACK);
+                buttons[row][col].setForeground(Color.GRAY);
                 panel2.add(buttons[row][col]);
-                buttons[row][col].addActionListener(e -> handle_Clicks(r, c));
+                buttons[row][col].addActionListener(e -> handleClicks(r, c));
             }
         }
 
         panel3.setBackground(Color.BLACK);
         panel3.add(button1);
-        button1.addActionListener(e -> {reset();});
+        button1.addActionListener(e -> reset());
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,24 +83,24 @@ public class TicTacToe {
         frame.setVisible(true);
     }
 
-    public void handle_Clicks(int row, int col){
+    private void handleClicks(int row, int col){
 
         if(gameOver){
             return;
         }
         if(buttons[row][col].getText().isEmpty()) {
-            buttons[row][col].setText(current_player);
+            buttons[row][col].setText(currentPlayer);
 
-            if (current_player.equals("X")) {
-                current_player = "O";
-                buttons[row][col].setBackground(Color.BLACK);
+            if (currentPlayer.equals("X")) {
+                currentPlayer = "O";
+
             } else {
-                current_player = "X";
-                buttons[row][col].setBackground(Color.BLACK);
+                currentPlayer = "X";
+
             }
 
             if(checkWinner()){
-                if(current_player.equals("O")){
+                if(currentPlayer.equals("O")){
                     colorBoard(Color.RED); //is RED because current_player switches immediately even if checkWinner is true!
                     xWon += 1;
                     player1.setText("Player 1 (X):" + xWon);
@@ -111,8 +112,7 @@ public class TicTacToe {
                     player2.setText("Player 2 (O):" + oWon);
                     gameOver = true;
                 }
-            }
-            if(isTie()){
+            }else if(isTie()){
                 colorBoard(Color.YELLOW);
                 isDrawn += 1;
                 draw.setText("Draw:" + isDrawn);
@@ -201,7 +201,7 @@ public class TicTacToe {
          lastGameStarter = "X";
      }
 
-     current_player = lastGameStarter;
+     currentPlayer = lastGameStarter;
 
     }
 }
