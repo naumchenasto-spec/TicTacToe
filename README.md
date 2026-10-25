@@ -21,7 +21,7 @@ A two-player Tic-Tac-Toe game with a graphical interface, built in Java using Sw
 1. Install a JDK (version 17 or newer)
 2. Clone the repository:
 3. Open the project in IntelliJ IDEA (or another Java IDE)
-4. Run `Main.java`
+4. Run `main.java`
 
 ## What I learned
 
