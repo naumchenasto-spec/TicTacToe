@@ -4,7 +4,7 @@ A two-player Tic-Tac-Toe game with a graphical interface, built in Java using Sw
 
 ## Screenshot
 
-![Game screenshot](../../Pictures/Screenshots/Screenshot%202026-10-25%20152050.png)
+![Game screenshot](c:\Users\Naum\OneDrive\Documents\TicTacToe\ExampleOfDraw.png)
 
 ## Features
 
@@ -19,7 +19,7 @@ A two-player Tic-Tac-Toe game with a graphical interface, built in Java using Sw
 ## How to run
 
 1. Install a JDK (version 17 or newer)
-2. Clone the repository:
+2. Clone the repository: https://github.com/naumchenasto-spec/TicTacToe.git
 3. Open the project in IntelliJ IDEA (or another Java IDE)
 4. Run `main.java`
 
